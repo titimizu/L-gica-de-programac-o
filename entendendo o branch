@@ -1,0 +1,18 @@
+TRABALHO - letícia, unidade buritis 
+
+ 
+
+O QUE É UM BRANCH? 
+
+   O branch é resumidamente uma cópia de algum arquivo que pode ser feita, nela é possivel realizar mudanças sem alterar 
+o arquivo principal. Os branches no Git são como página separadas onde é permitido realizar teste e experimentos sem alterar 
+o original, assim tendo uma organização nos arquivos e liberdade para testar. 
+
+  Esse recurso pode ser ultilizado para testes, realizar novas criações, trabalhar em novas deias e manter organização ao 
+mesmo tempo, ela serve para ma nter orga nização e segura nça. 
+
+Algu ns exemplos de como elapode ser usada é: para corrigir um bug, ao i nvés de corrigir o código direto no servidor, 
+o programador cria um bra nch e corrige o bug nessa cópia segura, testa, e depois ajusta o código pri ncipal. Tambem pode
+ser usada para criar a versao “dark mode” de um aplicativo, isso exige basta ntes alterações no código, e ntão ele cria o bra nch 
+para fazer essa versão e nqua nto a outra versão co ntinua funcionando para os usuários. E um ultimo exemplo de como esse recurso 
+pode ser usado é  para testar experime ntos e ideias, cria ndo um bra nch é possivel editar ele sem modificar o origi nal. 
