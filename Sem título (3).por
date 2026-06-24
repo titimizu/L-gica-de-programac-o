@@ -1,0 +1,203 @@
+programa
+{
+	funcao inicio()
+	{
+	// 0= não, 1=Sim
+
+		inteiro vidajogador = 220
+		inteiro vidaurso = 350
+		inteiro danourso = 15
+		inteiro danoespada = 15 
+		inteiro danoarco = 30 
+
+		inteiro limiteusopocao = 2     
+		inteiro limiteusoflechas = 4   
+		inteiro limiteusovarinha = 2   
+		inteiro limiteusotravesseiro = 1 
+		
+		inteiro esperavarinha = 0     
+		inteiro ursoparalisado = 0 // 0 =nao, 1=sim
+		inteiro escudoativo = 0       
+		inteiro travesseiroativo = 0
+		inteiro pocaousada = 0 // 0 =nao, 1 =sim
+
+		inteiro opcaomenu = 0
+		inteiro opcaomochila = 0
+		inteiro turnovalido = 0 // 0 =nao, 1 =sim
+
+		enquanto (vidajogador > 0 e vidaurso > 0)
+		{
+			se (esperavarinha > 0)
+			{
+				esperavarinha = esperavarinha - 1
+			}
+
+			escudoativo = 0 
+			travesseiroativo = 0
+			pocaousada = 0
+			turnovalido = 0
+
+			enquanto (turnovalido == 0)
+			{
+				escreva("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+				escreva("Vida do Jogador: ", vidajogador, " | Vida do Urso: ", vidaurso, "\n")
+				se (ursoparalisado == 1) {
+
+				}
+				escreva("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+				
+				escreva("Escolha sua ação:\n")
+				escreva("1) Usar Espada\n")
+				escreva("2) Usar Escudo\n")
+				escreva("3) Usar Item da Mochila\n")
+				escreva("Digite o número da opção escolhida: ")
+				leia(opcaomenu)
+				escreva("\n")
+
+				se (opcaomenu == 1) 
+				{
+					escreva("Você atacou com a espada brilhante!\n")
+					vidaurso = vidaurso - danoespada
+					ursoparalisado = 0 
+					turnovalido = 1
+				}
+				senao se (opcaomenu == 2) 
+				{
+					escreva("Você usou o escudo de coração!\n")
+					escudoativo = 1
+					ursoparalisado = 0
+					turnovalido = 1
+				}
+				senao se (opcaomenu == 3) 
+				{
+					escreva("----- mochila do jogador -----\n")
+					escreva("1) Varinha Mágica - restam: ", limiteusovarinha, "\n")
+					escreva("2) Arco - Flechas: ", limiteusoflechas, " \n")
+					escreva("3) Poção Mágica -  Restam: ", limiteusopocao, " \n")
+					escreva("4) Travesseiro -  Restam: ", limiteusotravesseiro, " \n")
+					escreva("Escolha o item: ")
+					leia(opcaomochila)
+					escreva("\n")
+
+					se (opcaomochila == 1)
+					{
+						se (limiteusovarinha > 0 e esperavarinha == 0) 
+						{
+							escreva("Você usou a marinha mágica! O Urso foi paralisado!\n")
+							escreva("Aproveitando o urso imóvel, você pode usar um item!\n")
+							vidaurso = vidaurso - danoespada
+							
+							ursoparalisado = 1 
+							limiteusovarinha = limiteusovarinha - 1
+							esperavarinha = 4 
+							turnovalido = 1
+						} 
+						senao se (limiteusovarinha <= 0) 
+						{
+							escreva("A Varinha Mágica já esgotou os 2 usos!\n")
+						}
+						senao 
+						{
+							escreva("A Varinha está recarregando! Faltam ", esperavarinha, " turnos.\n")
+						}
+					}
+					senao se (opcaomochila == 2)
+					{
+						se (limiteusoflechas > 0) 
+						{
+							escreva("Você disparou uma flecha com o Arco!\n")
+							vidaurso = vidaurso - danoarco
+							limiteusoflechas = limiteusoflechas - 1
+							ursoparalisado = 0
+							turnovalido = 1
+						} 
+						senao 
+						{
+							escreva("Sem flechas na mochila!\n")
+						}
+					}
+					senao se (opcaomochila == 3)
+					{
+						se (limiteusopocao > 0) 
+						{
+							vidajogador = vidajogador + 25
+							se (vidajogador > 220) { vidajogador = 220 } 
+							limiteusopocao = limiteusopocao - 1
+							pocaousada = 1 
+							escreva("Você bebeu a poção mágica! O Urso ficou confuso com o brilho e não ataca!\n")
+							ursoparalisado = 0
+							turnovalido = 1
+						} 
+						senao 
+						{
+							escreva("Suas poções acabaram!\n")
+						}
+					}
+					senao se (opcaomochila == 4)
+					{
+						se (limiteusotravesseiro > 0) 
+						{
+							escreva("Você usou o travesseiro, Ele vai amortecer todo o impacto!\n")
+							travesseiroativo = 1
+							limiteusotravesseiro = limiteusotravesseiro - 1
+							ursoparalisado = 0
+							turnovalido = 1
+						}
+						senao 
+						{
+							escreva("Você já gastou seu Travesseiro!\n")
+						}
+					}
+					senao
+					{
+						escreva("Opção de item inválida!\n")
+					}
+				}
+				senao 
+				{
+					escreva("Opção inválida! Escolha 1, 2 ou 3.\n")
+				}
+			}
+
+			se (vidaurso > 0) 
+			{
+				escreva("\n----- Turno do urso esmagador! -----\n")
+				
+				se (ursoparalisado == 1) 
+				{
+					escreva("O Urso está paralisado pela varinha e não consegue atacar!\n")
+				}
+				senao se (pocaousada == 1)
+				{
+					escreva("O Urso está confuso com o brilho da poção e não ataca este turno!\n")
+				}
+				senao se (travesseiroativo == 1)
+				{
+					escreva("O Urso avança com os braços abertos, mas o travesseiro anula todo o dano!\n")
+				}
+				senao se (escudoativo == 1) 
+				{
+					escreva("O urso esmagador te deu um abraço sufocante! Porém seu escudo reduz a força do abraço do urso!.\n")
+					vidajogador = vidajogador - 8
+					escreva("Você sofreu apenas 8 de dano.\n")
+				}
+				senao 
+				{
+					escreva("O urso esmagador te deu um abraço sufocante! - 15 de vida do jogador!\n")
+					vidajogador = vidajogador - danourso
+				}
+			}
+		}
+
+		escreva("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+		se (vidaurso <= 0) 
+		{
+			escreva("VITÓRIA! Você derrotou o urso!\n")
+		}
+		senao 
+		{
+			escreva("GAME OVER! Você foi esmagado pelo Urso...\n")
+		}
+		escreva("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+	}
+}
