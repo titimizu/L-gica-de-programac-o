@@ -1,0 +1,39 @@
+algoritmo "Sistema de senha"
+ 
+var
+
+   senha_correta, senha_digitada : caractere
+ 
+inicio
+
+   senha_correta <- "algoritmos123"
+ 
+   escreval("-sistema de login-")
+
+   escreva("Digite a senha para entrar: ")
+
+   leia(senha_digitada)
+ 
+   escreval()
+
+   escreval("----")
+ 
+ 
+   enquanto senha_digitada <> senha_correta faca
+
+      escreval("Erro: Senha esta incorreta! Por favor Tente novamente.")
+
+      escreval("-----")
+
+      escreva("Digite a senha: ")
+
+      leia(senha_digitada)
+
+   fimenquanto
+ 
+   escreval("---------")
+
+   escreval("Seja Bem-vindo! O Acesso esta liberado.")
+ 
+fimalgoritmo 
+ 
