@@ -1,0 +1,63 @@
+programa
+{
+	funcao inicio()
+	{
+		
+		cadeia t[3][3] = {
+			{"X", "O", "O"},
+			{"O", "X", "O"},
+			{"O", "O", "X"}
+		}
+
+		logico venceu = falso
+
+		escreva("> TABULEIRO <\n")
+		para (inteiro i = 0; i < 3; i++)
+		{
+			para (inteiro j = 0; j < 3; j++)
+			{
+				escreva(t[i][j], " ")
+			}
+			escreva("\n")
+		}
+		escreva("\n")
+
+	
+		para (inteiro i = 0; i < 3; i++)
+		{
+			se (t[i][0] != "-" e t[i][0] == t[i][1] e t[i][1] == t[i][2])
+			{
+				venceu = verdadeiro
+			}
+		}
+
+
+		para (inteiro j = 0; j < 3; j++)
+		{
+			se (t[0][j] != "-" e t[0][j] == t[1][j] e t[1][j] == t[2][j])
+			{
+				venceu = verdadeiro
+			}
+		}
+
+	
+		se (t[0][0] != "-" e t[0][0] == t[1][1] e t[1][1] == t[2][2])
+		{
+			venceu = verdadeiro
+		}
+
+		se (t[0][2] != "-" e t[0][2] == t[1][1] e t[1][1] == t[2][0])
+		{
+			venceu = verdadeiro
+		}
+
+		se (venceu)
+		{
+			escreva("O jogador venceu a partida!")
+		}
+		senao
+		{
+			escreva("Não houve vencedor ou o jogo empatou.")
+		}
+	}
+}
